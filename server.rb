@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'csv'
-require 'uri'
 
 players = []
 CSV.foreach('public/lackp_starting_rosters.csv', headers: true) do |row|
@@ -16,8 +15,6 @@ CSV.foreach('public/lackp_starting_rosters.csv', headers: true) do |row|
 end
 
 
-
-
 get '/' do
   @players = players
   erb :index
@@ -28,3 +25,10 @@ get '/teams/:team' do
   @team = params[:team]
   erb :team
 end
+
+get '/positions/:position' do
+  @players = players
+  @position = params[:position]
+  erb :positions
+end
+
