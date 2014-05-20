@@ -1,15 +1,22 @@
 <!DOCTYPE html>
+
+
+
 <html lang="en">
   <head>
     <title>League of Cool Kickball Professionals</title>
-    <link rel="stylesheet" href="home.css" />
   </head>
 
   <body>
     <h1>Teams</h1>
+    <% teams = [] %>
+    <% @players.each do |player| %>
+        <% teams << player[:team] %>
+      <% end %>
+    <% teams.uniq! %>
 
     <ul>
-      <% @teams.each do |team| %>
+      <% teams.each do |team| %>
         <li><%= team %></li>
       <% end %>
     </ul>
